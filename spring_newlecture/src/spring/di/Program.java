@@ -1,6 +1,10 @@
 package spring.di;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import spring.di.entity.Exam;
@@ -13,26 +17,33 @@ public class Program {
 
 	public static void main(String[] args) {
 		
-		/* ½ºÇÁ¸µ¿¡°Ô Áö½ÃÇÏ´Â ¹æ¹ýÀ¸·Î ÄÚµå¸¦ º¯°æ
-		 * // ÀÎÅÍÆäÀÌ½º¿ëÀ¸·Î 
+		/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµå¸¦ ï¿½ï¿½ï¿½ï¿½
+		 * // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		 * Exam exam = new NelecExam();
 		 * 
-		 * // exam Ãâ·ÂÇÏ´Â console
+		 * // exam ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ console
 		 * ExamConsole console = new GridExamConsole(); 
 		 * 
-		 * // setter¸¦ÅëÇØ »ý¼º
+		 * // setterï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		 * console.setExam(exam);
 		 */
 		
 		ApplicationContext context = 
-				new ClassPathXmlApplicationContext("spring/di/setting.xml");
+				new AnnotationConfigApplicationContext(NewlecDiConfig.class);
+//				new ClassPathXmlApplicationContext("spring/di/setting.xml");
 		
-		Exam exam = context.getBean(Exam.class);
-		System.out.println(exam.toString());
-		ExamConsole console =(ExamConsole) context.getBean("console"); // ÀÌ¸§À¸·Î ²¨³»±â
-		//ExamConsole console =context.getBean(ExamConsole.class); // ÀÚ·áÇü ¸íÀ¸·Î ²¨³»±â : ¼±È£ ¹æ½Ä
+		//Exam exam = context.getBean(Exam.class);
+		//System.out.println(exam.toString());
+		ExamConsole console =(ExamConsole) context.getBean("console"); // ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//ExamConsole console =context.getBean(ExamConsole.class); // ï¿½Ú·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½È£ ï¿½ï¿½ï¿½
 		
 		console.print();
+		
+		//List<Exam> exams = (List<Exam>)context.getBean("exams");//new ArrayList<>(); // exam ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ArrayListï¿½ï¿½ï¿½ï¿½
+		//exams.add(new NewlecExam(1,1,1,1)); // newlecExam ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ 1,1,1,1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ exams ï¿½ï¿½ ï¿½Ö´Â´ï¿½
+		
+//		for(Exam e : exams)
+//			System.out.println(e);
 
 	}
 
