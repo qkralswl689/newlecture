@@ -4,12 +4,21 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import spring.aop.entity.Exam;
 import spring.aop.entity.NewlecExam;
+import spring.di.NewlecDiConfig;
 
 public class Program {
 
 	public static void main(String[] args) {
+		
+		ApplicationContext context = 
+				//new AnnotationConfigApplicationContext(NewlecDiConfig.class);
+				new ClassPathXmlApplicationContext("spring/aop/setting.xml");
 		
 		Exam exam = new NewlecExam(1,1,1,1);
 		

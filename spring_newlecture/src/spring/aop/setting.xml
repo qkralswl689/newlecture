@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+						  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+						  http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+  	
+  	<!-- annotation 설정 : annotation이 있으면 연결해주라는 뜻   -->
+  	<!-- <context:annotation-config /> : component 설정하면 없어도 됨 -->
+  	
+  	<!-- Component 어노테이션 설정 -->
+  	<context:component-scan base-package="spring.di.ui,spring.di.entity" />
+  	
+  	<!-- Exam exam = new NewlecExam(); -->
+	<bean id="exam1" class="spring.di.entity.NewlecExam" p:kor="10" p:eng="20" p:com="30" p:math="40"/>
+	<!-- <bean id="exam2" class="spring.di.entity.NewlecExam" p:kor="10" p:eng="20" p:com="30" p:math="100"/> -->
+	
+	<!--<bean id="exam" class="spring.di.entity.NewlecExam">
+		<constructor-arg name="kor" value="10" />
+		<constructor-arg name="eng" value="20" />
+		<constructor-arg name="com" value="30" />
+		<constructor-arg name="math"  value="40" />
+	</bean>-->
+	
+	
+	<!-- ExamConsole console = new GridExamConsole(); -->
+	<!-- <bean id="console" class="spring.di.ui.InlineExamConsole">
+		onsole.setExam(exam);
+		<property name="exam" ref="exam"/> : @Autowired 사용으로 삭제
+		
+	</bean> -->
+<!-- 	<util:list id="exams" list-class="java.util.ArrayList">
+		객체를 만든다
+		<bean class="spring.di.entity.NewlecExam" p:kor="1" p:eng="1" p:com="30" p:math="40"/>
+		id :exam 인 bean을 참조 
+		<ref bean="exam"/>
+	</util:list> -->
+	
+	<!-- "exams" 객체 생성 -->
+	<!-- <bean id="exams" class="java.util.ArrayList"></bean>
+	 	constructor-arg : 생성자 생성
+		<constructor-arg>
+			값 초기화
+			<list>
+				bean생성하여 값 초기화
+				<bean class="spring.di.entity.NewlecExam" p:kor="1" p:eng="1" p:com="30" p:math="40"/>
+				id :exam 인 bean을 참조 
+				<ref bean="exam"/>
+			</list>
+		</constructor-arg> -->
+		
+</beans>

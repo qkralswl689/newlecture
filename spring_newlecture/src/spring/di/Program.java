@@ -17,14 +17,14 @@ public class Program {
 
 	public static void main(String[] args) {
 		
-		/* ���������� �����ϴ� ������� �ڵ带 ����
-		 * // �������̽������� 
+		/* 스프링에게 지시하는 방법으로 코드 변경
+		 * 
 		 * Exam exam = new NelecExam();
 		 * 
 		 * // exam ����ϴ� console
 		 * ExamConsole console = new GridExamConsole(); 
 		 * 
-		 * // setter������ ����
+		 * // setter 역할을 한다
 		 * console.setExam(exam);
 		 */
 		
